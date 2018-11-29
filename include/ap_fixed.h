@@ -349,6 +349,6 @@ INLINE void sc_trace(sc_core::sc_trace_file* tf,
 // image part automatically zero-initialized when only real part is provided.
 #include <ap_fixed_special.h>
 
-#endif // ifndef __AP_FIXED_H__ else
+#endif // ifndef __AP_FIXED_H__
 
 // -*- cpp -*-

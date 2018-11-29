@@ -1336,9 +1336,7 @@ CONCAT_SHIFT_WITH_INT(unsigned long, >>)
 CONCAT_SHIFT_WITH_INT(ap_slong, >>)
 CONCAT_SHIFT_WITH_INT(ap_ulong, >>)
 
-#endif // ifndef __cplusplus else
-#endif // ifndef __AP_INT_REF_H__ else
+#endif // ifndef __cplusplus
+#endif // ifndef __AP_INT_REF_H__
 
 // -*- cpp -*-
-
-// 67d7842dbbe25473c3c32b93c0da8047785f30d78e8a024de1b57352245f9689

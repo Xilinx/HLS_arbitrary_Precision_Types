@@ -716,5 +716,3 @@ AF_REF_REL_OP_WITH_AP_INT(!=)
 #endif // ifndef __AP_FIXED_REF_H__
 
 // -*- cpp -*-
-
-// 67d7842dbbe25473c3c32b93c0da8047785f30d78e8a024de1b57352245f9689

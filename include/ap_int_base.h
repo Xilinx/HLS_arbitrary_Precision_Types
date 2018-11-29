@@ -1884,7 +1884,7 @@ OP_REL_WITH_CONCAT(<=)
 
 #undef OP_REL_WITH_CONCAT
 
-#endif // ifndef __cplusplus else
-#endif // ifndef __AP_INT_BASE_H__ else
+#endif // ifndef __cplusplus
+#endif // ifndef __AP_INT_BASE_H__
 
-// 67d7842dbbe25473c3c32b93c0da8047785f30d78e8a024de1b57352245f9689
+// -*- cpp -*-

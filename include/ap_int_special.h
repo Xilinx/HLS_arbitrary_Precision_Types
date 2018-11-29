@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#ifndef AP_INT_SPECIAL_H
-#define AP_INT_SPECIAL_H
+#ifndef __AP_INT_SPECIAL_H__
+#define __AP_INT_SPECIAL_H__
 #ifndef __SYNTHESIS__
 #include <cstdio>
 #include <cstdlib>
@@ -212,6 +212,6 @@ inline bool operator!=(const ap_int<_AP_W> &__x, const complex<ap_int<_AP_W> > &
 
 }  // namespace std
 
-#endif  // ifndef AP_INT_SPECIAL_H
+#endif  // ifndef __AP_INT_SPECIAL_H__
 
-// 67d7842dbbe25473c3c32b93c0da8047785f30d78e8a024de1b57352245f9689
+// -*- cpp -*-

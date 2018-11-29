@@ -720,9 +720,6 @@ INLINE half rawBitsToHalf(unsigned short pi) {
 }
 #endif
 
-#endif // ifndef __AP_COMMON_H__ else
+#endif // ifndef __AP_COMMON_H__
 
 // -*- cpp -*-
-// vim: fdm=marker:foldmarker=#if,#endif:nofoldenable
-
-// 67d7842dbbe25473c3c32b93c0da8047785f30d78e8a024de1b57352245f9689
