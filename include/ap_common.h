@@ -53,6 +53,7 @@
 
 // ----------------------------------------------------------------------
 
+// Forward declaration of all AP types.
 #include <ap_decl.h>
 
 // Macro functions
@@ -593,20 +594,13 @@ static inline unsigned char guess_radix(const char* s) {
 
 // ----------------------------------------------------------------------
 
-// Forward declaration of all AP types.
+#ifdef _AP_ENABLE_HALF_
 // Before ap_private definition.
 #ifdef __SYNTHESIS__
 #define _HLS_HALF_DEFINED_
 typedef __fp16 half;
 #else
 class half;
-#endif
-
-// FIXME previously, ap_int_syn.h includes hls_half.h, which includes cmath.h
-// even during synthesis. Some test cases are spoiled...
-#ifdef __cplusplus
-#ifndef __SYNTHESIS__
-#include <cmath>
 #endif
 #endif
 
@@ -706,6 +700,7 @@ INLINE unsigned int floatToRawBits(float pf) {
   return LD.__L;
 }
 
+#ifdef _AP_ENABLE_HALF_
 INLINE unsigned short halfToRawBits(half pf) {
 #ifdef __SYNTHESIS__
   union {
@@ -718,6 +713,7 @@ INLINE unsigned short halfToRawBits(half pf) {
   return pf.get_bits();
 #endif
 }
+#endif
 
 // usigned long long is at least 64-bit
 INLINE double rawBitsToDouble(ap_ulong pi) {
@@ -739,6 +735,7 @@ INLINE float rawBitsToFloat(unsigned long pi) {
   return LD.__D;
 }
 
+#ifdef _AP_ENABLE_HALF_
 // short is at least 16-bit
 INLINE half rawBitsToHalf(unsigned short pi) {
 #ifdef __SYNTHESIS__
@@ -755,6 +752,7 @@ INLINE half rawBitsToHalf(unsigned short pi) {
   return __D;
 #endif
 }
+#endif
 
 #endif // ifndef __AP_COMMON_H__ else
 

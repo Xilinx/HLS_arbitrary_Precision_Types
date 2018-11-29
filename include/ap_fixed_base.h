@@ -60,8 +60,10 @@
 // for ap_int_base and its reference types.
 #include <ap_int.h>
 #ifndef __SYNTHESIS__
+#ifdef _AP_ENABLE_HALF_
 // for half type
 #include <hls_half.h>
+#endif
 // for std io
 #include <iostream>
 #endif
@@ -670,8 +672,10 @@ struct ap_fixed_base : _AP_ROOT_TYPE<_AP_W, _AP_S> {
   // TODO more optimized implementation.
   INLINE ap_fixed_base(float d) { *this = ap_fixed_base(double(d)); }
 
+#ifdef _AP_ENABLE_HALF_
   // TODO more optimized implementation.
   INLINE ap_fixed_base(half d) { *this = ap_fixed_base(double(d)); }
+#endif
   //  @}
 
   /// @name assign operator
@@ -970,6 +974,7 @@ struct ap_fixed_base : _AP_ROOT_TYPE<_AP_W, _AP_S> {
     return rawBitsToFloat(m);
   }
 
+#ifdef _AP_ENABLE_HALF_
   /// convert function to half.
   /** only round-half-to-even mode supported, does not obey FE env. */
   INLINE half to_half() const {
@@ -1016,6 +1021,7 @@ struct ap_fixed_base : _AP_ROOT_TYPE<_AP_W, _AP_S> {
     // cast to fp
     return rawBitsToHalf(m);
   }
+#endif
 
   // FIXME inherited from old code, this may loose precision!
   INLINE operator long double() const { return (long double)to_double(); }
@@ -1024,7 +1030,9 @@ struct ap_fixed_base : _AP_ROOT_TYPE<_AP_W, _AP_S> {
 
   INLINE operator float() const { return to_float(); }
 
+#ifdef _AP_ENABLE_HALF_
   INLINE operator half() const { return to_half(); }
+#endif
 
   INLINE operator bool() const { return (bool)Base::V != 0; }
 

@@ -86,9 +86,6 @@ typedef unsigned __int64 uint64_t;
 #include <stdint.h>
 #endif
 
-// FIXME eventually, this should have nothing to do with half.
-#include "hls_half.h"
-
 #ifndef INLINE
 #define INLINE inline
 // Enable to debug ap_int/ap_fixed
@@ -1484,10 +1481,11 @@ ASSIGN_OP_FROM_INT(long)
 ASSIGN_OP_FROM_INT(unsigned long)
 ASSIGN_OP_FROM_INT(ap_slong)
 ASSIGN_OP_FROM_INT(ap_ulong)
+#if 0
 ASSIGN_OP_FROM_INT(half)
-//FIXME cast half to integer ?
 ASSIGN_OP_FROM_INT(float)
 ASSIGN_OP_FROM_INT(double)
+#endif
 #undef ASSIGN_OP_FROM_INT
 
   // XXX This is a must to prevent pointer being converted to bool.
@@ -1646,9 +1644,11 @@ ASSIGN_OP_FROM_INT(double)
   CTOR(unsigned long)
   CTOR(ap_slong)
   CTOR(ap_ulong)
+#if 0
   CTOR(half)
   CTOR(float)
   CTOR(double)
+#endif
 #undef CTOR
 
   template <int _AP_W1, bool _AP_S1, bool _AP_OPT>
@@ -2494,9 +2494,11 @@ ASSIGN_OP_FROM_INT(double)
   OP_LEFT_SHIFT_CTYPE(unsigned long, false)
   OP_LEFT_SHIFT_CTYPE(long long, true)
   OP_LEFT_SHIFT_CTYPE(unsigned long long, false)
+#if 0
   OP_LEFT_SHIFT_CTYPE(half, false)
   OP_LEFT_SHIFT_CTYPE(float, false)
   OP_LEFT_SHIFT_CTYPE(double, false)
+#endif
 
 #undef OP_LEFT_SHIFT_CTYPE
 
@@ -2538,9 +2540,11 @@ ASSIGN_OP_FROM_INT(double)
   OP_RIGHT_SHIFT_CTYPE(unsigned long, false)
   OP_RIGHT_SHIFT_CTYPE(unsigned long long, false)
   OP_RIGHT_SHIFT_CTYPE(long long, true)
+#if 0
   OP_RIGHT_SHIFT_CTYPE(half, false)
   OP_RIGHT_SHIFT_CTYPE(float, false)
   OP_RIGHT_SHIFT_CTYPE(double, false)
+#endif
 
 #undef OP_RIGHT_SHIFT_CTYPE
 
@@ -3368,9 +3372,11 @@ class ap_private<_AP_W, _AP_S, false> {
   CTOR(unsigned long, false)
   CTOR(ap_slong, true)
   CTOR(ap_ulong, false)
+#if 0
   CTOR(half, false)
   CTOR(float, false)
   CTOR(double, false)
+#endif
 #undef CTOR
 
   /// @returns true if the number of bits <= 64, false otherwise.
@@ -3955,9 +3961,11 @@ class ap_private<_AP_W, _AP_S, false> {
   OP_LEFT_SHIFT_CTYPE(unsigned long, false)
   OP_LEFT_SHIFT_CTYPE(unsigned long long, false)
   OP_LEFT_SHIFT_CTYPE(long long, true)
+#if 0
   OP_LEFT_SHIFT_CTYPE(half, false)
   OP_LEFT_SHIFT_CTYPE(float, false)
   OP_LEFT_SHIFT_CTYPE(double, false)
+#endif
 #undef OP_LEFT_SHIFT_CTYPE
 
   template <int _AP_W2, bool _AP_S2>
@@ -3998,9 +4006,11 @@ class ap_private<_AP_W, _AP_S, false> {
   OP_RIGHT_SHIFT_CTYPE(unsigned long, false)
   OP_RIGHT_SHIFT_CTYPE(unsigned long long, false)
   OP_RIGHT_SHIFT_CTYPE(long long, true)
+#if 0
   OP_RIGHT_SHIFT_CTYPE(half, false)
   OP_RIGHT_SHIFT_CTYPE(float, false)
   OP_RIGHT_SHIFT_CTYPE(double, false)
+#endif
 #undef OP_RIGHT_SHIFT_CTYPE
 
   template <int _AP_W2, bool _AP_S2>

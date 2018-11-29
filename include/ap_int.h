@@ -157,7 +157,9 @@ struct ap_int : ap_int_base<_AP_W, true> {
 #undef CTOR
   ap_int(double val) : Base(val) {}
   ap_int(float val) : Base(val) {}
+#ifdef _AP_ENABLE_HALF_
   ap_int(half val) : Base(val) {}
+#endif
 
   // ap_int_base will guess radix if radix is not provided.
   INLINE ap_int(const char* s) : Base(s) {}
@@ -289,7 +291,9 @@ struct ap_uint : ap_int_base<_AP_W, false> {
 #undef CTOR
   ap_uint(double val) : Base(val) {}
   ap_uint(float val) : Base(val) {}
+#ifdef _AP_ENABLE_HALF_
   ap_uint(half val) : Base(val) {}
+#endif
 
   // ap_int_base will guess radix if radix is not provided.
   INLINE ap_uint(const char* s) : Base(s) {}

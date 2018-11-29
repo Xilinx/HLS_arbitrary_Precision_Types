@@ -63,7 +63,9 @@
 
 #include <ap_common.h>
 #ifndef __SYNTHESIS__
+#ifdef _AP_ENABLE_HALF_
 #include <hls_half.h>
+#endif
 #include <iostream>
 #include <string.h>
 #endif
@@ -250,12 +252,14 @@ struct ap_int_base : public _AP_ROOT_TYPE<_AP_W, _AP_S> {
   CTOR_FROM_INT(ap_ulong, _AP_SIZE_ap_slong, false)
 #undef CTOR_FROM_INT
 
+#ifdef _AP_ENABLE_HALF_
   /// ctor from half.
   //  TODO optimize
   INLINE ap_int_base(half op) {
     ap_int_base<_AP_W, _AP_S> t((float)op);
     Base::V = t.V;
   }
+#endif
 
   /// ctor from float.
   INLINE ap_int_base(float op) {
@@ -1426,7 +1430,9 @@ OP_BIN_WITH_PTR(-)
   OP_BIN_WITH_FLOAT(+, C_TYPE) \
   OP_BIN_WITH_FLOAT(-, C_TYPE)
 
+#ifdef _AP_ENABLE_HALF_
 ALL_OP_WITH_FLOAT(half)
+#endif
 ALL_OP_WITH_FLOAT(float)
 ALL_OP_WITH_FLOAT(double)
 
