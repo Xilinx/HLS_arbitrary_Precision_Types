@@ -22,6 +22,21 @@
 // Forward declaration of all AP types.
 #include <ap_decl.h>
 
+// TODO Undefine in open-source release.
+#define _AP_ENABLE_HALF_ 1
+
+#ifdef _AP_ENABLE_HALF_
+// Before ap_private definition.
+#ifdef __SYNTHESIS__
+#define _HLS_HALF_DEFINED_
+typedef __fp16 half;
+#else
+class half;
+#endif // __SYNTHESIS__
+#endif // _AP_ENABLE_HALF_
+
+// ----------------------------------------------------------------------
+
 // Macro functions
 #define AP_MAX(a, b) ((a) > (b) ? (a) : (b))
 #define AP_MIN(a, b) ((a) < (b) ? (a) : (b))
@@ -557,18 +572,6 @@ static inline unsigned char guess_radix(const char* s) {
   }
   return rd;
 }
-
-// ----------------------------------------------------------------------
-
-#ifdef _AP_ENABLE_HALF_
-// Before ap_private definition.
-#ifdef __SYNTHESIS__
-#define _HLS_HALF_DEFINED_
-typedef __fp16 half;
-#else
-class half;
-#endif
-#endif
 
 // ----------------------------------------------------------------------
 
