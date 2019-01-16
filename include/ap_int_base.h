@@ -62,15 +62,12 @@
 
 #include <ap_common.h>
 #ifndef __SYNTHESIS__
-#ifdef _AP_ENABLE_HALF_
+#if _AP_ENABLE_HALF_ == 1
 #include <hls_half.h>
 #endif
 #include <iostream>
 #include <string.h>
 #endif
-
-// for ptrdiff_t used in increasing pointer.
-#include <cstddef>
 
 /* ----------------------------------------------------------------
  * ap_int_base: AutoPilot integer/Arbitrary precision integer.
@@ -251,7 +248,7 @@ struct ap_int_base : public _AP_ROOT_TYPE<_AP_W, _AP_S> {
   CTOR_FROM_INT(ap_ulong, _AP_SIZE_ap_slong, false)
 #undef CTOR_FROM_INT
 
-#ifdef _AP_ENABLE_HALF_
+#if _AP_ENABLE_HALF_ == 1
   /// ctor from half.
   //  TODO optimize
   INLINE ap_int_base(half op) {
@@ -1391,13 +1388,13 @@ OP_BIN_AP2(%, mod)
   template <typename PTR_TYPE, int _AP_W, bool _AP_S>                     \
   INLINE PTR_TYPE* operator BIN_OP(PTR_TYPE* i_op,                        \
                                    const ap_int_base<_AP_W, _AP_S>& op) { \
-    std::ptrdiff_t op2 = op.to_long(); /* Not all implementation */            \
+    ap_slong op2 = op.to_int64(); /* Not all implementation */            \
     return i_op BIN_OP op2;                                               \
   }                                                                       \
   template <typename PTR_TYPE, int _AP_W, bool _AP_S>                     \
   INLINE PTR_TYPE* operator BIN_OP(const ap_int_base<_AP_W, _AP_S>& op,   \
                                    PTR_TYPE* i_op) {                      \
-    std::ptrdiff_t op2 = op.to_long(); /* Not all implementation */            \
+    ap_slong op2 = op.to_int64(); /* Not all implementation */            \
     return op2 BIN_OP i_op;                                               \
   }
 
@@ -1429,7 +1426,7 @@ OP_BIN_WITH_PTR(-)
   OP_BIN_WITH_FLOAT(+, C_TYPE) \
   OP_BIN_WITH_FLOAT(-, C_TYPE)
 
-#ifdef _AP_ENABLE_HALF_
+#if _AP_ENABLE_HALF_ == 1
 ALL_OP_WITH_FLOAT(half)
 #endif
 ALL_OP_WITH_FLOAT(float)

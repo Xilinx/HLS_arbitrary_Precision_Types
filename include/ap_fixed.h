@@ -174,7 +174,7 @@ struct ap_fixed : ap_fixed_base<_AP_W, _AP_I, true, _AP_Q, _AP_O, _AP_N> {
   CTOR(unsigned long)
   CTOR(ap_slong)
   CTOR(ap_ulong)
-#ifdef _AP_ENABLE_HALF_
+#if _AP_ENABLE_HALF_ == 1
   CTOR(half)
 #endif
   CTOR(float)
@@ -324,7 +324,7 @@ struct ap_ufixed : ap_fixed_base<_AP_W, _AP_I, false, _AP_Q, _AP_O, _AP_N> {
   CTOR(unsigned long)
   CTOR(ap_slong)
   CTOR(ap_ulong)
-#ifdef _AP_ENABLE_HALF_
+#if _AP_ENABLE_HALF_ == 1
   CTOR(half)
 #endif
   CTOR(float)

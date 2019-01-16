@@ -56,9 +56,9 @@
 #include <ap_decl.h>
 
 // TODO Undefine in open-source release.
-#define _AP_ENABLE_HALF_ 1
+// #define _AP_ENABLE_HALF_ 1
 
-#ifdef _AP_ENABLE_HALF_
+#if _AP_ENABLE_HALF_ == 1
 // Before ap_private definition.
 #ifdef __SYNTHESIS__
 #define _HLS_HALF_DEFINED_
@@ -168,8 +168,7 @@ class half;
 #endif
 
 // for detecting if char is signed.
-#include <climits>
-enum { CHAR_IS_SIGNED = CHAR_MIN < 0 };
+enum { CHAR_IS_SIGNED = (char)-1 < 0 };
 
 // TODO we have similar traits in x_hls_utils.h, should consider unify.
 namespace _ap_type {
@@ -702,7 +701,7 @@ INLINE unsigned int floatToRawBits(float pf) {
   return LD.__L;
 }
 
-#ifdef _AP_ENABLE_HALF_
+#if _AP_ENABLE_HALF_ == 1
 INLINE unsigned short halfToRawBits(half pf) {
 #ifdef __SYNTHESIS__
   union {
@@ -737,7 +736,7 @@ INLINE float rawBitsToFloat(unsigned long pi) {
   return LD.__D;
 }
 
-#ifdef _AP_ENABLE_HALF_
+#if _AP_ENABLE_HALF_ == 1
 // short is at least 16-bit
 INLINE half rawBitsToHalf(unsigned short pi) {
 #ifdef __SYNTHESIS__

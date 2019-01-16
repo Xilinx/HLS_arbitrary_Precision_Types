@@ -59,7 +59,7 @@
 // for ap_int_base and its reference types.
 #include <ap_int.h>
 #ifndef __SYNTHESIS__
-#ifdef _AP_ENABLE_HALF_
+#if _AP_ENABLE_HALF_ == 1
 // for half type
 #include <hls_half.h>
 #endif
@@ -671,7 +671,7 @@ struct ap_fixed_base : _AP_ROOT_TYPE<_AP_W, _AP_S> {
   // TODO more optimized implementation.
   INLINE ap_fixed_base(float d) { *this = ap_fixed_base(double(d)); }
 
-#ifdef _AP_ENABLE_HALF_
+#if _AP_ENABLE_HALF_ == 1
   // TODO more optimized implementation.
   INLINE ap_fixed_base(half d) { *this = ap_fixed_base(double(d)); }
 #endif
@@ -973,7 +973,7 @@ struct ap_fixed_base : _AP_ROOT_TYPE<_AP_W, _AP_S> {
     return rawBitsToFloat(m);
   }
 
-#ifdef _AP_ENABLE_HALF_
+#if _AP_ENABLE_HALF_ == 1
   /// convert function to half.
   /** only round-half-to-even mode supported, does not obey FE env. */
   INLINE half to_half() const {
@@ -1029,7 +1029,7 @@ struct ap_fixed_base : _AP_ROOT_TYPE<_AP_W, _AP_S> {
 
   INLINE operator float() const { return to_float(); }
 
-#ifdef _AP_ENABLE_HALF_
+#if _AP_ENABLE_HALF_ == 1
   INLINE operator half() const { return to_half(); }
 #endif
 
