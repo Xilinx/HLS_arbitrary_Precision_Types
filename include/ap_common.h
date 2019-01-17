@@ -22,8 +22,10 @@
 // Forward declaration of all AP types.
 #include <ap_decl.h>
 
-// TODO Undefine in open-source release.
-// #define _AP_ENABLE_HALF_ 1
+// Automatically enable half if FPO exists
+#if ! defined _AP_ENABLE_HALF_ && defined __SIM_FPO__
+#define _AP_ENABLE_HALF_ 1
+#endif
 
 #if _AP_ENABLE_HALF_ == 1
 // Before ap_private definition.
