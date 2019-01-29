@@ -1,5 +1,4 @@
-HLS Arbitrary Precision Library
-===============================
+# HLS Arbitrary Precision Types Library
 
 Copyright 2011-2019 Xilinx, Inc.
 
