@@ -52,7 +52,8 @@ namespace std {
    in standard 26.2.4 and 26.2.5.
 */
 template <int _AP_W>
-struct complex<ap_int<_AP_W> > {
+class complex<ap_int<_AP_W> > {
+ public:
   typedef ap_int<_AP_W> _Tp;
   typedef _Tp value_type;
 
@@ -173,7 +174,7 @@ struct complex<ap_int<_AP_W> > {
   _Tp _M_real;
   _Tp _M_imag;
 
-}; // struct complex<ap_int<_AP_W> >
+}; // class complex<ap_int<_AP_W> >
 
 
 /*

@@ -52,7 +52,8 @@ namespace std {
    in standard 26.2.4 and 26.2.5.
 */
 template <int _AP_W, int _AP_I, ap_q_mode _AP_Q, ap_o_mode _AP_O, int _AP_N>
-struct complex<ap_fixed<_AP_W, _AP_I, _AP_Q, _AP_O, _AP_N> > {
+class complex<ap_fixed<_AP_W, _AP_I, _AP_Q, _AP_O, _AP_N> > {
+ public:
   typedef ap_fixed<_AP_W, _AP_I, _AP_Q, _AP_O, _AP_N> _Tp;
   typedef _Tp value_type;
 
@@ -173,7 +174,7 @@ struct complex<ap_fixed<_AP_W, _AP_I, _AP_Q, _AP_O, _AP_N> > {
   _Tp _M_real;
   _Tp _M_imag;
 
-}; // struct complex<ap_fixed<_AP_W, _AP_I, _AP_Q, _AP_O, _AP_N> >
+}; // class complex<ap_fixed<_AP_W, _AP_I, _AP_Q, _AP_O, _AP_N> >
 
 /*
    Non-member operations
