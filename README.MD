@@ -2,7 +2,7 @@
 
 This repo provides simulation code of HLS Arbitrary Precision Types.
 The code is based from headers shipped with Vivado,
-but due to absence of synthesis support it should not be used in an HLS project targeting FPGA.
+but due to absence of synthesis support **it should not be used in an HLS project targeting FPGA**.
 
 ----
 
