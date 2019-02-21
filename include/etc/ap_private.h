@@ -1401,22 +1401,26 @@ class ap_private<_AP_W, _AP_S, true> {
   void operator=(const ap_private& RHS) volatile {
     // Don't do anything for X = X
     VAL = RHS.get_VAL(); // No need to check because no harm done by copying.
+    clearUnusedBits();
   }
 
   ap_private& operator=(const ap_private& RHS) {
     // Don't do anything for X = X
     VAL = RHS.get_VAL(); // No need to check because no harm done by copying.
+    clearUnusedBits();
     return *this;
   }
 
   void operator=(const volatile ap_private& RHS) volatile {
     // Don't do anything for X = X
     VAL = RHS.get_VAL(); // No need to check because no harm done by copying.
+    clearUnusedBits();
   }
 
   ap_private& operator=(const volatile ap_private& RHS) {
     // Don't do anything for X = X
     VAL = RHS.get_VAL(); // No need to check because no harm done by copying.
+    clearUnusedBits();
     return *this;
   }
 
@@ -4543,20 +4547,24 @@ class ap_private<_AP_W, _AP_S, false> {
   /// @brief Copy assignment operator.
   INLINE ap_private& operator=(const ap_private& RHS) {
     if (this != &RHS) memcpy(pVal, RHS.get_pVal(), _AP_N * APINT_WORD_SIZE);
+    clearUnusedBits();
     return *this;
   }
   INLINE ap_private& operator=(const volatile ap_private& RHS) {
     if (this != &RHS)
       for (int i = 0; i < _AP_N; ++i) pVal[i] = RHS.get_pVal(i);
+    clearUnusedBits();
     return *this;
   }
   INLINE void operator=(const ap_private& RHS) volatile {
     if (this != &RHS)
       for (int i = 0; i < _AP_N; ++i) pVal[i] = RHS.get_pVal(i);
+    clearUnusedBits();
   }
   INLINE void operator=(const volatile ap_private& RHS) volatile {
     if (this != &RHS)
       for (int i = 0; i < _AP_N; ++i) pVal[i] = RHS.get_pVal(i);
+    clearUnusedBits();
   }
 
   template <int _AP_W1, bool _AP_S1>

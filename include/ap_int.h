@@ -29,6 +29,10 @@ struct ap_int : ap_int_base<_AP_W, true> {
   typedef ap_int_base<_AP_W, true> Base;
   // Constructor
   INLINE ap_int() : Base() {}
+
+  // Copy ctor
+  INLINE ap_int(const ap_int& op) { Base::V = op.V; }
+
   template <int _AP_W2>
   INLINE ap_int(const ap_int<_AP_W2>& op) {
     Base::V = op.V;
@@ -163,6 +167,10 @@ struct ap_uint : ap_int_base<_AP_W, false> {
   typedef ap_int_base<_AP_W, false> Base;
   // Constructor
   INLINE ap_uint() : Base() {}
+
+  // Copy ctor
+  INLINE ap_uint(const ap_uint& op) { Base::V = op.V; }
+
   template <int _AP_W2>
   INLINE ap_uint(const ap_uint<_AP_W2>& op) {
     Base::V = op.V;

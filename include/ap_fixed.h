@@ -32,6 +32,9 @@ struct ap_fixed : ap_fixed_base<_AP_W, _AP_I, true, _AP_Q, _AP_O, _AP_N> {
   /// default ctor
   INLINE ap_fixed() : Base() {}
 
+  /// default copy ctor
+  INLINE ap_fixed(const ap_fixed& op) { Base::V = op.V; }
+
   /// copy ctor from ap_fixed_base.
   template <int _AP_W2, int _AP_I2, bool _AP_S2, ap_q_mode _AP_Q2,
             ap_o_mode _AP_O2, int _AP_N2>
@@ -190,6 +193,9 @@ struct ap_ufixed : ap_fixed_base<_AP_W, _AP_I, false, _AP_Q, _AP_O, _AP_N> {
   // Constructor
   /// default ctor
   INLINE ap_ufixed() : Base() {}
+
+  /// default copy ctor
+  INLINE ap_ufixed(const ap_ufixed& op) { Base::V = op.V; }
 
   /// copy ctor from ap_fixed_base
   template <int _AP_W2, int _AP_I2, bool _AP_S2, ap_q_mode _AP_Q2,
