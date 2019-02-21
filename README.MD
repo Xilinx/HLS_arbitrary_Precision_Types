@@ -1,5 +1,11 @@
 # HLS Arbitrary Precision Types Library
 
+This repo provides simulation code of HLS Arbitrary Precision Types.
+The code is based from headers shipped with Vivado,
+but due to absence of synthesis support **it should not be used in an HLS project targeting FPGA**.
+
+----
+
 Copyright 2011-2019 Xilinx, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
