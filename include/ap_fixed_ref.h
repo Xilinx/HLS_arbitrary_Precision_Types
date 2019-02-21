@@ -285,7 +285,9 @@ struct af_range_ref {
   ASSIGN_CTYPE_TO_AF_RANGE(unsigned long)
   ASSIGN_CTYPE_TO_AF_RANGE(ap_slong)
   ASSIGN_CTYPE_TO_AF_RANGE(ap_ulong)
+#if _AP_ENABLE_HALF_ == 1
   ASSIGN_CTYPE_TO_AF_RANGE(half)
+#endif
   ASSIGN_CTYPE_TO_AF_RANGE(float)
   ASSIGN_CTYPE_TO_AF_RANGE(double)
 #undef ASSIGN_CTYPE_TO_AF_RANGE

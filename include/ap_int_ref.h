@@ -90,7 +90,9 @@ struct ap_concat_ref {
   ASSIGN_WITH_CTYPE(unsigned long)
   ASSIGN_WITH_CTYPE(ap_slong)
   ASSIGN_WITH_CTYPE(ap_ulong)
+#if _AP_ENABLE_HALF_ == 1
   ASSIGN_WITH_CTYPE(half)
+#endif
   ASSIGN_WITH_CTYPE(float)
   ASSIGN_WITH_CTYPE(double)
 
@@ -359,7 +361,9 @@ struct ap_range_ref {
   ASSIGN_WITH_CTYPE(unsigned long)
   ASSIGN_WITH_CTYPE(ap_slong)
   ASSIGN_WITH_CTYPE(ap_ulong)
+#if _AP_ENABLE_HALF_ == 1
   ASSIGN_WITH_CTYPE(half)
+#endif
   ASSIGN_WITH_CTYPE(float)
   ASSIGN_WITH_CTYPE(double)
 
@@ -794,7 +798,9 @@ struct ap_bit_ref {
     return *this;                                           \
   }
 
+#if _AP_ENABLE_HALF_ == 1
   ASSIGN_WITH_CTYPE_FP(half)
+#endif
   ASSIGN_WITH_CTYPE_FP(float)
   ASSIGN_WITH_CTYPE_FP(double)
 
