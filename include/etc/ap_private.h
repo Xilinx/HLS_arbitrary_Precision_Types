@@ -2097,7 +2097,7 @@ ASSIGN_OP_FROM_INT(double)
 
   INLINE void set(const ap_private& val) { operator=(val); }
 
-  INLINE void clearUnusedBits(void)
+  INLINE void clearUnusedBits(void) volatile
 // just for clang compiler
 #if defined(__clang__) && !defined(__CLANG_3_1__)
       __attribute__((no_sanitize("undefined")))
@@ -3387,7 +3387,7 @@ class ap_private<_AP_W, _AP_S, false> {
   /// significant word is assigned a value to ensure that those bits are
   /// zero'd out.
   /// @brief Clear unused high order bits
-  INLINE void clearUnusedBits(void)
+  INLINE void clearUnusedBits(void) volatile
 // just for clang compiler
 #if defined(__clang__) && !defined(__CLANG_3_1__)
       __attribute__((no_sanitize("undefined")))
