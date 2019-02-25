@@ -1,10 +1,31 @@
 # HLS Arbitrary Precision Types Library
 
 This repo provides simulation code of HLS Arbitrary Precision Types.
+
 The code is based from headers shipped with Vivado,
 but due to absence of synthesis support **it should not be used in an HLS project targeting FPGA**.
 
-----
+## Compatibility
+
+Tested with g++ (GCC) 6.2.0 on x86_64 GNU/Linux.
+
+## Usage
+
+Include the `ap_int.h` or `ap_fixed.h` in C++ code,
+and set compiler option to add the path of `include` directory in this repo
+into header search directory list.
+
+```
+$ cd examples/ap_int
+$ g++ -I ../../include/ test.cpp
+$ ./a.out
+a = 11.3137 (0x0b.504ea4p0)
+b = 11.3137 (0x0b.504f33p0)
+c = a + b = 22.6274 (0x16.a09dd7p0)
+$
+```
+
+## License Info
 
 Copyright 2011-2019 Xilinx, Inc.
 
