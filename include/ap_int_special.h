@@ -16,6 +16,11 @@
 
 #ifndef __AP_INT_SPECIAL_H__
 #define __AP_INT_SPECIAL_H__
+
+#ifndef __AP_INT_H__
+#error "Only ap_fixed.h and ap_int.h can be included directly in user code."
+#endif
+
 #ifndef __SYNTHESIS__
 #include <cstdio>
 #include <cstdlib>

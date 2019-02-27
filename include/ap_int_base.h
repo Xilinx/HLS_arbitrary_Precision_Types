@@ -18,9 +18,7 @@
 #define __AP_INT_BASE_H__
 
 #ifndef __AP_INT_H__
-// TODO make this an error
-#pragma message \
-    "Only ap_fixed.h and ap_int.h can be included directly in user code."
+#error "Only ap_fixed.h and ap_int.h can be included directly in user code."
 #endif
 
 #ifndef __cplusplus

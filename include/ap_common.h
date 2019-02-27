@@ -22,10 +22,12 @@
 // Forward declaration of all AP types.
 #include <ap_decl.h>
 
-// Automatically enable half if FPO exists
-#if ! defined _AP_ENABLE_HALF_ && defined __SIM_FPO__
-#define _AP_ENABLE_HALF_ 1
-#endif
+
+#ifdef __SYNTHESIS__
+#error "The open-source version of AP types does not support synthesis."
+#endif // ifdef __SYNTHESIS__
+#define _AP_ENABLE_HALF_ 0
+
 
 #if _AP_ENABLE_HALF_ == 1
 // Before ap_private definition.
@@ -191,9 +193,7 @@ struct remove_const<_Tp const> {
 // ----------------------------------------------------------------------
 
 // Define ssdm_int and _ssdm_op.
-#ifdef __SYNTHESIS__
-#error "This header does not sypport synthesis"
-#endif // ifdef __SYNTHESIS__
+// XXX deleted in open-source version
 
 #ifndef NON_C99STRING
 #define _AP_C99 true
