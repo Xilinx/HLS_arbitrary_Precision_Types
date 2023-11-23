@@ -1590,7 +1590,8 @@ ASSIGN_OP_FROM_INT(double)
   }
 
  public:
-  INLINE ap_private() {
+  INLINE ap_private() 
+      : VAL(0) {
     set_canary();
     clearUnusedBits();
     check_canary();
@@ -3302,6 +3303,7 @@ class ap_private<_AP_W, _AP_S, false> {
   ///  for object deserialization (pair this with the static method Read).
   INLINE ap_private() {
     set_canary();
+    memset(pVal, 0, _AP_N * sizeof(uint64_t));
     clearUnusedBits();
     check_canary();
   }
